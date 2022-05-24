@@ -3,8 +3,7 @@ class Sort
 		@sorted = csv_table
 	end
 
-	def csv_sort(field = 'Id')
-		@sorted = @sorted.sort_by {|a| a[field]}
-		return CSV::Table.new(@sorted, headers: true)
+	def sort(field = 'Id')
+		CSV::Table.new(@sorted.sort_by {|a| a[field]}, headers: true)
 	end
 end

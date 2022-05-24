@@ -1,20 +1,21 @@
 class Filter
-	def initialize(csv_table)
-		@filtred = csv_table
+	def initialize(params)
+		@params = params
 	end
 
-	def filter_more_than(field = 'Id', condition)
-		@filtred =  @filtred.select{|str| str[field].to_i > condition.to_i}
-		return  CSV::Table.new(@filtred, headers: true)
+  def filter
+		CSV::Table.new(public_send("filter_#{@params[:action]}"), headers: true)
+	end 
+
+	def filter_more
+		@params[:csv].select{|str| str[@params[:field]].to_i > @params[:condition].to_i}
 	end
 
-	def filter_less_than(field = 'Id', condition)
-		@filtred =  @filtred.select{|str| str[field].to_i < condition.to_i}
-		return  CSV::Table.new(@filtred, headers: true)
+	def filter_less
+		@params[:csv].select{|str| str[@params[:field]].to_i < @params[:condition].to_i}
 	end
 
-	def filter_equal(field = 'Id', condition)
-		@filtred =  @filtred.select{|str| str[field] == condition}
-		return  CSV::Table.new(@filtred, headers: true)
+	def filter_equal
+		@params[:csv].select{|str| str[@params[:field]] == @params[:condition]}
 	end
 end

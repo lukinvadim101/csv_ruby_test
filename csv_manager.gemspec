@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
         'lib/csv_manager/filter.rb',
         'lib/csv_manager/sort.rb',
         'lib/csv_manager/file.rb',
+        'lib/csv_manager/store.rb',
         'lib/tasks/run_csv.rake',
         'db/db.csv',
         'spec/csv_manager_spec.rb',

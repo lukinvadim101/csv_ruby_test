@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name = 'csv_manager'
-    s.version = '0.2.0'
+    s.version = '0.3.0'
     s.licenses = ['MIT']
     s.summary = 'csv test project'
     s.authors = ['Vadim Lukin']
@@ -17,9 +17,10 @@ Gem::Specification.new do |s|
         'lib/tasks/run_csv.rake',
         'db/db.csv',
         'spec/csv_manager_spec.rb',
-        'spec/lib/csv_manager/csv_file_spec.rb',
-        'spec/lib/csv_manager/csv_filter_spec.rb',
-        'spec/lib/csv_manager/csv_sort_spec.rb',
+        'spec/lib/file_spec.rb',
+        'spec/lib/filter_spec.rb',
+        'spec/lib/sort_spec.rb',
+        'spec/lib/store_spec.rb',
     ]
     s.add_dependency 'csv'
 end

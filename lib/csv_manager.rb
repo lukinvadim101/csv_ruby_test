@@ -7,10 +7,10 @@ require_relative 'csv_manager/store'
 class CsvManager 
 
   def csv_create(csv)
-	  File.write('db/done.csv', csv.to_csv)
-	end
+    File.write('db/done.csv', csv.to_csv)
+  end
 
-	def run(path: nil, filter: nil, sort: nil)
+  def run(path: nil, filter: nil, sort: nil)
     if(!path)
       puts 'File Path error'
       return
@@ -27,7 +27,7 @@ class CsvManager
     end
 
     csv_create(store_obj.store)
-	end
+  end
 end
 
 

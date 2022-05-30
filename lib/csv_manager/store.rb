@@ -6,8 +6,8 @@ class Store
     @store = array
   end
 
-  def filter(field, action, condition)
-    @store = Filter.new(@store).filter(field, action, condition)
+  def filter(params)
+    @store = Filter.new(@store).filter(params)
   end
 
   def sort(sort_opt)

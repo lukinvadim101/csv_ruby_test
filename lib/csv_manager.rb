@@ -14,16 +14,12 @@ class CsvManager
     db = CsvFile.new(path).csv
     store = Store.new(db)
 
-    while filter_opt.size >= 3
-      field, action, condition = filter_opt
-      store.filter(field, action, condition)
-      filter_opt = filter_opt[3...]
-    end
+    filter_opt.each_slice(3).each { |param| store.filter(param) }
 
     store.sort(sort_opt)
-    
+
     csv_create(store.store)
 	end
 end
 
-# CsvManager.new().run('db/db.csv', ['Age','more',10,'Name','equal','Marge'],'Name')
+CsvManager.new().run('db/db.csv', ['Age','more',10,'Name','equal','Marge'],'Name')

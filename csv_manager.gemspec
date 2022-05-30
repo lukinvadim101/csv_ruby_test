@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name = 'csv_manager'
-    s.version = '0.5.0'
+    s.version = '0.6.0'
     s.licenses = ['MIT']
     s.summary = 'csv project'
     s.authors = ['Vadim Lukin']

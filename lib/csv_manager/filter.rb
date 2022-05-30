@@ -3,10 +3,8 @@ class Filter
 		@arr = params
 	end
 
-  def filter(field, action, condition)
-		@field = field
-		@condition = condition
-
+  def filter(params)
+		@field, action, @condition = params
 		CSV::Table.new(public_send("filter_#{action}"), headers: true)
 	end 
 

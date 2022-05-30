@@ -10,16 +10,27 @@ class CsvManager
 	  File.write('db/done.csv', csv.to_csv)
 	end
 
-	def run(path, filter_opt, sort_opt)
-    db = CsvFile.new(path).csv
-    store = Store.new(db)
+	def run(path: nil, filter: nil, sort: nil)
+    if(!path)
+      puts 'File Path error'
+      return
+    end
 
-    filter_opt.each_slice(3).each { |param| store.filter(param) }
+    store_obj = Store.new(CsvFile.new(path).csv)
 
-    store.sort(sort_opt)
+    if (filter)
+      filter.each { |param| store_obj.filter(param) }
+    end
 
-    csv_create(store.store)
+    if(sort)
+      store_obj.sort(sort)
+    end
+
+    csv_create(store_obj.store)
 	end
 end
 
-CsvManager.new().run('db/db.csv', ['Age','more',10,'Name','equal','Marge'],'Name')
+
+# CsvManager.new().run(path: 'db/db.csv', filter:[['Age','more',10]])
+# CsvManager.new().run(path: 'db/db.csv', filter:[['Age','more',10],['Name','equal','Marge']])
+# CsvManager.new().run(path: 'db/db.csv', sort:'Id')

@@ -1,6 +1,5 @@
 RSpec.describe 'CSV Store' do 
-  let(:db) {CsvFile.new('db/db.csv').csv}
-  let(:store){Store.new(db)}
+  let(:store){Store.new(CsvFile.new('db/db.csv').csv)}
 
   it "store type at the begining is a csv table" do 
     expect(store.store.class).to eq (CSV::Table) 

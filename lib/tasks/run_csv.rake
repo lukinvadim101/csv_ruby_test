@@ -1,7 +1,7 @@
 require 'csv_manager'
 require 'optparse'
 
-desc 'Method'
+desc 'CSV Manager'
 task :run, [:path,:filter,:sort] do |t, args|
   options = {}
   opts = OptionParser.new
@@ -12,7 +12,18 @@ task :run, [:path,:filter,:sort] do |t, args|
   args = opts.order!(ARGV) {}
   opts.parse!(args)
 
-  CsvManager.new().run(options[:path],options[:filter],options[:sort])
+  if(!options[:filter].nil?)
+    options[:filter] = options[:filter].split('AND')
+  end
+
+  CsvManager.new().run(
+    path: options[:path],
+    filter: options[:filter],
+    sort: options[:sort]
+  )
 end
 
-# rake run -- --path db/db.csv --filter 'Age','more',10,'Name','equal','Marge' --sort Name
+
+# rake run -- --path db/db.csv --filter Age,more,8,AND,Gender,equal,Male --sort Name
+# rake run -- --path db/db.csv --filter Age,less,15
+# rake run -- --path db/db.csv --sort Id

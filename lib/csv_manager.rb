@@ -13,11 +13,17 @@ class CsvManager
 	def run(path, filter_opt, sort_opt)
     db = CsvFile.new(path).csv
     store = Store.new(db)
-    store.filter(filter_opt)
+
+    while filter_opt.size >= 3
+      field, action, condition = filter_opt
+      store.filter(field, action, condition)
+      filter_opt = filter_opt[3...]
+    end
+
     store.sort(sort_opt)
+    
     csv_create(store.store)
 	end
 end
 
-
-# CsvManager.new().run('db/db.csv', ['filter', ['Age','more',10],['Name','equal','Marge']],['sort','Name'])
+# CsvManager.new().run('db/db.csv', ['Age','more',10,'Name','equal','Marge'],'Name')

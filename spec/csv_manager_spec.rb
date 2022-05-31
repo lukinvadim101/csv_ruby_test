@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'csv_manager'
 
-RSpec.describe 'CSV Manager' do 
+RSpec.describe 'CSV Manager' do
   it 'final file exist' do
-    CsvManager.new().run(path:'db/db.csv', sort:'Id')
+    CsvManager.new.run(path: 'db/db.csv', sort: 'Id')
     expect(File).to exist('db/done.csv')
   end
 end

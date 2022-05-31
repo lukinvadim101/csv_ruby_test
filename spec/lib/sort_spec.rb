@@ -1,9 +1,11 @@
-RSpec.describe 'CSV Sort' do 
-  let(:store) {Store.new(CsvFile.new('db/db.csv').csv)}
+# frozen_string_literal: true
 
-  it "csv sort works" do 
+RSpec.describe 'CSV Sort' do
+  let(:store) { Store.new(CsvFile.new('db/db.csv').csv) }
+
+  it 'csv sort works' do
     @csv = Sort.new(store).execute('Id')
-    expect(@csv[0][0]).to eq ('1')
-    expect(@csv[-1][0]).to eq ('5') 
+    expect(@csv[0][0]).to eq('1')
+    expect(@csv[-1][0]).to eq('5')
   end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Store
   attr_accessor :store
-  
+
   def initialize(array)
     @store = array
   end

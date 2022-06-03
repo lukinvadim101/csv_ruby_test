@@ -10,7 +10,7 @@ task :run, [:path, :filter, :sort] do |_t, args|
 
   opts.on('-p', '--path ARG', String) { |path| options[:path] = path }
   opts.on('-f', '--filter ARG', Array) { |filter| options[:filter] = filter }
-  opts.on('-s', '--sort ARG', String) { |sort| options[:sort] = sort }
+  opts.on('-s', '--sort ARG', Array) { |sort| options[:sort] = sort }
   args = opts.order!(ARGV) {}
   opts.parse!(args)
 
@@ -26,3 +26,4 @@ end
 # rake run -- --path db/db.csv --filter Age,more,8,AND,Gender,equal,Male --sort Name
 # rake run -- --path db/db.csv --filter Age,less,15
 # rake run -- --path db/db.csv --sort Id
+# rake run -- --path db/db.csv --sort Id, reverse

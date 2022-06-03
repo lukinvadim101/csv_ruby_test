@@ -22,7 +22,8 @@ class CsvManager
 
 end
 
-# CsvManager.new().run(path: 'db/db.csv', filter:[['Age','more',10]])
+# CsvManager.new().run(path: 'db/db.csv', filter:[['Age','more',10]], sort: ['Id', 'reverse'])
+# CsvManager.new().run(path: 'db/db.csv', filter:[['Age','more',10]], sort: ['Id'])
 # CsvManager.new().run(path: 'db/db.csv', filter:[['Age','more',10],['Name','equal','Marge']])
-# CsvManager.new.run(path: 'db/db.csv')
+# CsvManager.new.run(path: 'db/db.csv', sort: 'Id')
 # CsvManager.new.run

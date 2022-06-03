@@ -19,7 +19,7 @@ class Store
     self.store = filter_handler.execute(params)
   end
 
-  def sort(field)
-    self.store = sort_handler.execute(field)
+  def sort(params)
+    self.store = sort_handler.execute(params)
   end
 end
